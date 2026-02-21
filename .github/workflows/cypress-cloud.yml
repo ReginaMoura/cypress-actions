@@ -4,14 +4,14 @@ on:
   workflow_dispatch: 
     inputs:
       spec:
-        description: Run by cypress comand line
+        description: Run by cypress command line
         default: cypress/e2e/*
         
 jobs:
   cypress-e2e-electron:
    runs-on: ubuntu-latest
    container: 
-     image: cypress/browsers:node-20.18.0-chrome-129.0.6668.89-1-ff-131.0.2-edge-129.0.2792.65-1
+     image: cypress/browsers:node-20.11.1-chrome-120.0.6099.109-1-ff-119.0-edge-120.0.2210.91-1
      options: --user 1001
    steps:
      - name: Get code
@@ -20,7 +20,7 @@ jobs:
      - name: Cypress run
        uses: cypress-io/github-action@v6.5.0
        with:
-         install-comand: yarn install
+         install-command: yarn install
          browser: electron
          record: true
          group: UI Electron
@@ -32,7 +32,7 @@ jobs:
    needs: cypress-e2e-electron
    runs-on: ubuntu-latest
    container:
-     image: cypress/browsers:node-20.18.0-chrome-129.0.6668.89-1-ff-131.0.2-edge-129.0.2792.65-1
+     image: cypress/browsers:node-20.11.1-chrome-120.0.6099.109-1-ff-119.0-edge-120.0.2210.91-1
      options: --user 1001
    steps:
      - name: Get code
@@ -41,7 +41,7 @@ jobs:
      - name: Cypress run
        uses: cypress-io/github-action@v6.5.0
        with:
-         install-comand: yarn install
+         install-command: yarn install
          browser: chrome
          record: true
          group: UI Chrome
@@ -53,7 +53,7 @@ jobs:
     needs: cypress-e2e-electron
     runs-on: ubuntu-latest
     container:
-     image: cypress/browsers:node-20.18.0-chrome-129.0.6668.89-1-ff-131.0.2-edge-129.0.2792.65-1
+     image: cypress/browsers:node-20.11.1-chrome-120.0.6099.109-1-ff-119.0-edge-120.0.2210.91-1
      options: --user 1001
     steps:
      - name: Get code
@@ -62,7 +62,7 @@ jobs:
      - name: Cypress run
        uses: cypress-io/github-action@v6.5.0
        with:
-         install-comand: yarn install
+         install-command: yarn install
          browser: firefox
          record: true
          group: UI Firefox
